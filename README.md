@@ -24,7 +24,14 @@ db:
   dsn: user:password@tcp(127.0.0.1:3306)/dbname?parseTime=true
 ```
 
-### Create SQL Table
+### Available Commands
+
+```cmd
+setup    Create administrative areas table
+country  Save a country
+```
+
+### Create SQL table
 
 To create `administrative_areas` table to your database, run this command:
 
@@ -32,11 +39,18 @@ To create `administrative_areas` table to your database, run this command:
 adminarea-cli setup
 ```
 
+### Save the country
+
+```cmd
+// adminarea-cli country [COUNTRY_CODE_ID]
+adminarea-cli country id
+```
+
 ## TODO
 
 - [x] Can create db table
 - [ ] Config file can pass by argument
-- [ ] Save country
+- [x] Save country
 - [ ] Save provinces by country
 - [ ] Save regencies by country
 - [ ] Save districts by country

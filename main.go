@@ -8,6 +8,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/ramadani/adminarea-cli/command"
+	"github.com/ramadani/adminarea-cli/src/repository"
 
 	"github.com/urfave/cli"
 	"gopkg.in/yaml.v2"
@@ -42,14 +43,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer db.Close()
 
 	setupCommand := command.NewSetupCommand(db)
+	countryCommand := command.NewCountryCommand(repository.NewMySQLRepository(db))
 
 	app := cli.NewApp()
 	app.Name = "adminarea-cli"
 	app.Usage = "Administrative Area Command Line Tool"
+	app.Version = "0.1.0"
 	app.Commands = []cli.Command{
 		setupCommand,
+		countryCommand,
 	}
 
 	err = app.Run(os.Args)
