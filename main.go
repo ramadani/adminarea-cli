@@ -6,10 +6,11 @@ import (
 	"log"
 	"os"
 
+	"github.com/ramadani/adminarea-cli/src/migration"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/ramadani/adminarea-cli/command"
 	"github.com/ramadani/adminarea-cli/src/repository"
-	"github.com/ramadani/adminarea-cli/src/service"
 
 	"github.com/urfave/cli"
 	"gopkg.in/yaml.v2"
@@ -46,11 +47,11 @@ func main() {
 	}
 	defer db.Close()
 
+	migrate := migration.NewMySQLMigration(db)
 	repo := repository.NewMySQLRepository(db)
-	countryService := service.NewCountryService(repo)
 
-	setupCommand := command.NewSetupCommand(db)
-	countryCommand := command.NewCountryCommand(countryService)
+	setupCommand := command.NewSetupCommand(migrate)
+	countryCommand := command.NewCountryCommand(repo)
 
 	app := cli.NewApp()
 	app.Name = "adminarea-cli"
