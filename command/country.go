@@ -8,12 +8,12 @@ import (
 	"github.com/ramadani/adminarea"
 
 	"github.com/ramadani/adminarea-cli/src"
-	"github.com/ramadani/adminarea-cli/src/service"
+	"github.com/ramadani/adminarea-cli/src/repository"
 	"github.com/urfave/cli"
 )
 
 // NewCountryCommand country command
-func NewCountryCommand(service service.CountryService) cli.Command {
+func NewCountryCommand(repo repository.Repository) cli.Command {
 	return cli.Command{
 		Name:  "country",
 		Usage: "Save a country",
@@ -25,10 +25,10 @@ func NewCountryCommand(service service.CountryService) cli.Command {
 
 			id := strings.ToUpper(cID)
 			country := adminarea.New(id).GetCountry()
-			err := service.Save(&src.AdminArea{
+			_, err := repo.Save(&src.AdminArea{
 				ID:   country.ID,
 				Name: country.Name,
-				Type: "country",
+				Type: "COUNTRY",
 			})
 
 			if err != nil {
