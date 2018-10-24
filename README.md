@@ -50,7 +50,7 @@ adminarea-cli country id
 
 - [x] Can create db table
 - [ ] Config file can pass by argument
-- [x] Save country
+- [x] Save a country
 - [ ] Save provinces by country
 - [ ] Save regencies by country
 - [ ] Save districts by country
