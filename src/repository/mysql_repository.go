@@ -23,6 +23,7 @@ func (r *MySQLRepository) Save(adminArea *src.AdminArea) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	defer stmt.Close()
 
 	now := time.Now()
 	_, err = stmt.Exec(adminArea.ID, adminArea.Name, adminArea.Type, adminArea.ParentID, now, now,
