@@ -5,6 +5,12 @@ Administrative Area CLI
 ## Features
 
 * Can create sql table
+* Save a country
+* Save the provinces of a country
+
+### Available Countries
+
+- Indonesia (id)
 
 ## Installation
 
@@ -29,6 +35,7 @@ db:
 ```cmd
 setup    Create administrative areas table
 country  Save a country
+province  Save the provinces of a country
 ```
 
 ### Create SQL table
@@ -46,12 +53,19 @@ adminarea-cli setup
 adminarea-cli country id
 ```
 
+### Save the provinces of a country
+
+```cmd
+// adminarea-cli province [COUNTRY_CODE_ID]
+adminarea-cli province id
+```
+
 ## TODO
 
 - [x] Can create db table
 - [ ] Config file can pass by argument
 - [x] Save a country
-- [ ] Save provinces by country
+- [x] Save provinces by country
 - [ ] Save regencies by country
 - [ ] Save districts by country
 - [ ] Save villages by country
