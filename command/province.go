@@ -9,6 +9,7 @@ import (
 	"github.com/ramadani/adminarea-cli/src"
 	"github.com/ramadani/adminarea-cli/src/repository"
 	"github.com/urfave/cli"
+	pb "gopkg.in/cheggaaa/pb.v1"
 )
 
 // NewProvinceCommand new province command
@@ -29,6 +30,9 @@ func NewProvinceCommand(repo repository.Repository) cli.Command {
 				return err
 			}
 
+			count := len(provinces)
+			bar := pb.StartNew(count)
+
 			for _, province := range provinces {
 				_, err = repo.Save(&src.AdminArea{
 					ID:       province.ID,
@@ -40,9 +44,11 @@ func NewProvinceCommand(repo repository.Repository) cli.Command {
 				if err != nil {
 					return err
 				}
+
+				bar.Increment()
 			}
 
-			fmt.Println(fmt.Sprintf("The provinces of country %s has been saved", aa.GetCountry().Name))
+			bar.FinishPrint(fmt.Sprintf("The provinces of %s has been saved", aa.GetCountry().Name))
 
 			return nil
 		},
