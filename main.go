@@ -55,6 +55,7 @@ func main() {
 	provinceCommand := command.NewProvinceCommand(repo)
 	cityCommand := command.NewCityCommand(repo)
 	districtCommand := command.NewDistrictCommand(repo)
+	villageCommand := command.NewVillageCommand(repo)
 
 	app := cli.NewApp()
 	app.Name = "adminarea-cli"
@@ -66,6 +67,7 @@ func main() {
 		provinceCommand,
 		cityCommand,
 		districtCommand,
+		villageCommand,
 	}
 
 	err = app.Run(os.Args)

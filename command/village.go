@@ -12,11 +12,11 @@ import (
 	pb "gopkg.in/cheggaaa/pb.v1"
 )
 
-// NewDistrictCommand new district command
-func NewDistrictCommand(repo repository.Repository) cli.Command {
+// NewVillageCommand new village command
+func NewVillageCommand(repo repository.Repository) cli.Command {
 	return cli.Command{
-		Name:  "district",
-		Usage: "Save the districts of a country",
+		Name:  "village",
+		Usage: "Save the villages of a country",
 		Action: func(c *cli.Context) error {
 			cID := c.Args().First()
 			if cID == "" {
@@ -25,20 +25,20 @@ func NewDistrictCommand(repo repository.Repository) cli.Command {
 
 			id := strings.ToUpper(cID)
 			aa := adminarea.New(id)
-			districts, err := aa.GetDistricts()
+			villages, err := aa.GetVillages()
 			if err != nil {
 				return err
 			}
 
-			count := len(districts)
+			count := len(villages)
 			bar := pb.StartNew(count)
 
-			for _, district := range districts {
+			for _, village := range villages {
 				_, err = repo.Save(&src.AdminArea{
-					ID:       district.ID,
-					Name:     district.Name,
-					Type:     "DISTRICT",
-					ParentID: district.ParentID,
+					ID:       village.ID,
+					Name:     village.Name,
+					Type:     "VILLAGE",
+					ParentID: village.ParentID,
 				})
 
 				if err != nil {
@@ -48,7 +48,7 @@ func NewDistrictCommand(repo repository.Repository) cli.Command {
 				bar.Increment()
 			}
 
-			bar.FinishPrint(fmt.Sprintf("The districts of %s has been saved", aa.GetCountry().Name))
+			bar.FinishPrint(fmt.Sprintf("The villages of %s has been saved", aa.GetCountry().Name))
 
 			return nil
 		},

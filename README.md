@@ -9,6 +9,7 @@ Administrative Area CLI
 * Save the provinces of a country
 * Save the cities/regencies of a country
 * Save the districts of a country
+* Save the villages of a country
 
 ### Available Countries
 
@@ -39,6 +40,7 @@ setup     Create administrative areas table
 country   Save a country     province  Save the provinces of a country
 city      Save the cities/regencies of a country
 district  Save the districts of a country
+village   Save the villages of a country
 ```
 
 ### Create DB table
@@ -77,6 +79,13 @@ adminarea-cli city id
 adminarea-cli district id
 ```
 
+### Save the villages of a country
+
+```cmd
+// adminarea-cli village [COUNTRY_CODE_ID]
+adminarea-cli village id
+```
+
 ## TODO
 
 - [x] Can create db table
@@ -85,7 +94,12 @@ adminarea-cli district id
 - [x] Save provinces by country
 - [x] Save regencies by country
 - [x] Save districts by country
-- [ ] Save villages by country
+- [x] Save villages by country
+
+## References
+
+* [edwardsamuel/Wilayah-Administratif-Indonesia](https://github.com/edwardsamuel/Wilayah-Administratif-Indonesia)
+* [Country Codes List](https://www.nationsonline.org/oneworld/country_code_list.htm)
 
 ## License
 
