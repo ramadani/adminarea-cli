@@ -4,10 +4,11 @@ Administrative Area CLI
 
 ## Features
 
-* Can create sql table
+* Create db table
 * Save a country
 * Save the provinces of a country
 * Save the cities/regencies of a country
+* Save the districts of a country
 
 ### Available Countries
 
@@ -35,12 +36,12 @@ db:
 
 ```cmd
 setup     Create administrative areas table
-country   Save a country
-province  Save the provinces of a country
+country   Save a country     province  Save the provinces of a country
 city      Save the cities/regencies of a country
+district  Save the districts of a country
 ```
 
-### Create SQL table
+### Create DB table
 
 To create `administrative_areas` table to your database, run this command:
 
@@ -69,6 +70,13 @@ adminarea-cli province id
 adminarea-cli city id
 ```
 
+### Save the districts of a country
+
+```cmd
+// adminarea-cli district [COUNTRY_CODE_ID]
+adminarea-cli district id
+```
+
 ## TODO
 
 - [x] Can create db table
@@ -76,7 +84,7 @@ adminarea-cli city id
 - [x] Save a country
 - [x] Save provinces by country
 - [x] Save regencies by country
-- [ ] Save districts by country
+- [x] Save districts by country
 - [ ] Save villages by country
 
 ## License
