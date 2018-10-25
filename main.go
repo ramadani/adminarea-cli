@@ -53,6 +53,7 @@ func main() {
 	setupCommand := command.NewSetupCommand(migrate)
 	countryCommand := command.NewCountryCommand(repo)
 	provinceCommand := command.NewProvinceCommand(repo)
+	cityCommand := command.NewCityCommand(repo)
 
 	app := cli.NewApp()
 	app.Name = "adminarea-cli"
@@ -62,6 +63,7 @@ func main() {
 		setupCommand,
 		countryCommand,
 		provinceCommand,
+		cityCommand,
 	}
 
 	err = app.Run(os.Args)
